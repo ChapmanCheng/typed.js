@@ -43,7 +43,10 @@ export default class Typed {
     if (this.typingComplete) return;
     if (!this.pause.status) return;
     this.pause.status = false;
-    if (this.pause.typewrite) {
+    if (
+      this.pause.typewrite &&
+      this.pause.curString.length !== this.pause.curStrPos
+    ) {
       this.typewrite(this.pause.curString, this.pause.curStrPos);
     } else {
       this.backspace(this.pause.curString, this.pause.curStrPos);
